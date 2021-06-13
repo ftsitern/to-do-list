@@ -1,14 +1,13 @@
 import React from 'react'
 
 const Display = (props) => {
-   const {list}=props
+   const {list, editTask}=props
+
  return (
   <div>
-   {list.map((task)=>{
-    const {id,todo}=task
+   {list.map((Task)=>{
+    const {id,task}=Task
     return (
-      
-        
         <div class='row px-3 align-items-center todo-item rounded' key={id}>
           <div class='col-auto m-2  d-flex align-items-center'>
             <input
@@ -23,36 +22,23 @@ const Display = (props) => {
               type='text'
               class='form-control form-control-lg border-0 edit-todo-input bg-transparent rounded px-3'
               readonly
-              value={todo}
-              title={todo}
+              value={task}
+              title={task}
             />
           </div>
           <div class='col-auto m-1 p-0 px-3 d-none'></div>
           <div class='col-auto m-1 p-0 todo-actions'>
-            <div class='row d-flex align-items-center justify-content-end'>
-              <h5 class='m-0 p-0 px-2'>
-                <i
-                  class='fa fa-pencil text-info btn m-0 p-0'
-                  data-toggle='tooltip'
-                  data-placement='bottom'
-                  title='Edit todo'
-                ></i>
-              </h5>
-              <h5 class='m-0 p-0 px-2'>
-                <i
-                  class='fa fa-trash-o text-danger btn m-0 p-0'
-                  data-toggle='tooltip'
-                  data-placement='bottom'
-                  title='Delete todo'
-                ></i>
-              </h5>
-            </div>
+              <button className="btn btn-outline-primary" value={id} onClick={editTask} style={{margin: 10}}>
+                Edit
+              </button>
+              <button className="btn btn-primary btn-danger">
+                Delete
+              </button>
           </div>
         </div>
       
     )
-
-   })}
+})}
   </div>
  )
 }
