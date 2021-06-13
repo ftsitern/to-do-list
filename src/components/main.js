@@ -4,19 +4,29 @@ import Header from './header';
 import AddNotes from './form-add-notes';
 import CompletedTask from './sec-completed-task';
 import IncompleteTask from './incompleted-task';
+import shortid from 'shortid';
 const Main = () => {
-    const [todo, setTodo] = useState('')
+    const [todo, setTodo] = useState({id: '', task: '', isModified: false});
     const [list, setList] = useState([])
     const handleSubmit = (e) => {
-      e.preventDefault()
-      const task = { id: new Date().getTime().toString(), todo }
-      setList([...list, task])
+      e.preventDefault();
+      const newlist = list.filter((val) => val.isModified === false)
+      const uniqueid = shortid.generate();
+      setList([...newlist, {task: todo, id: uniqueid, isModified: false}]);
       console.log(list)
-      setTodo('')
+      setTodo({id: '', task: '', isModified: false})
     }
     const handleChange = (e) => {
-      setTodo(e.target.value)
+      setTodo(e.target.value);
     }
+
+    const editTask = (e) =>{
+      // console.log(e.target.value);
+      var val = list.find((item) => item.id === e.target.value);
+      val.isModified = true;
+      setTodo({...todo, task: val.task});
+    }
+
  return (
    <div className='main'>
      <Navbar />
@@ -34,7 +44,7 @@ const Main = () => {
          <CompletedTask />
 
          {/*  Incompleted tasks */}
-         <IncompleteTask list={list}/>
+         <IncompleteTask list={list} editTask={editTask}/>
        </div>
      </div>
    </div>
