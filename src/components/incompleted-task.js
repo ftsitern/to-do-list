@@ -1,6 +1,8 @@
 import React from 'react'
+import Display from './display-list'
 
-const IncompleteTask = () => {
+const IncompleteTask = (props) => {
+  const {list}=props;
  return (
    <div class='text-primary col-sm-6 mx'>
      <h3>Incompleted Tasks</h3>
@@ -12,6 +14,7 @@ const IncompleteTask = () => {
            value=''
            id='flexCheckDefault'
          />
+         
        </div>
        <div class='col px-1 m-1 d-flex align-items-center'>
          <input
@@ -44,6 +47,7 @@ const IncompleteTask = () => {
          </div>
        </div>
      </div>
+     <Display list={list} ></Display>
    </div>
  )
 }
