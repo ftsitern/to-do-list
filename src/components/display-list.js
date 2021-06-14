@@ -1,7 +1,7 @@
 import React from 'react'
 
 const Display = (props) => {
-   const {list, editTask}=props
+   const {list, editTask,deleteTask}=props
 
  return (
   <div>
@@ -31,7 +31,7 @@ const Display = (props) => {
               <button className="btn btn-outline-primary" value={id} onClick={editTask} style={{margin: 10}}>
                 Edit
               </button>
-              <button className="btn btn-primary btn-danger">
+              <button className="btn btn-primary btn-danger" value={id} onClick={deleteTask} >
                 Delete
               </button>
           </div>

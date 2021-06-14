@@ -12,9 +12,12 @@ const Main = () => {
       e.preventDefault();
       const newlist = list.filter((val) => val.isModified === false)
       const uniqueid = shortid.generate();
+      if(todo.task!=='')
+      {
       setList([...newlist, {task: todo, id: uniqueid, isModified: false}]);
       console.log(list)
       setTodo({id: '', task: '', isModified: false})
+      }
     }
     const handleChange = (e) => {
       setTodo(e.target.value);
@@ -25,6 +28,12 @@ const Main = () => {
       var val = list.find((item) => item.id === e.target.value);
       val.isModified = true;
       setTodo({...todo, task: val.task});
+    }
+    const deleteTask = (e) =>{
+      var newTask = list.filter((task)=>{
+        return  task.id !== e.target.value
+      })
+      setList(newTask)
     }
 
  return (
@@ -44,7 +53,7 @@ const Main = () => {
          <CompletedTask />
 
          {/*  Incompleted tasks */}
-         <IncompleteTask list={list} editTask={editTask}/>
+         <IncompleteTask list={list} editTask={editTask} deleteTask={deleteTask}/>
        </div>
      </div>
    </div>
