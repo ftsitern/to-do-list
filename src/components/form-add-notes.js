@@ -4,8 +4,7 @@ const AddNotes = (props) => {
 const {todo,handleChange,handleSubmit}=props
  return (
    <div className='addNotes'>
-     <div class='input-group mx-auto mb-3 w-50'>
-     <form onSubmit={handleSubmit}>
+     <form onSubmit={handleSubmit} class="input-group mb-5" style={{width: "50%", margin: "auto"}}>
        <input
          type='text'
          className='form-control'
@@ -20,7 +19,6 @@ const {todo,handleChange,handleSubmit}=props
          </button>
        </div>
        </form>
-     </div>
    </div>
  )
 }
