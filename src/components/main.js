@@ -48,12 +48,12 @@ const Main = () => {
      ></AddNotes>
      {/* Rest of the container items except nvabar */}
      <div class='container '>
-       <div class='row mx-auto my-8'>
-         {/* Section for completed tasks  */}
-         <CompletedTask />
-
+       <div class='row mx-auto my-8'> 
          {/*  Incompleted tasks */}
          <IncompleteTask list={list} editTask={editTask} deleteTask={deleteTask}/>
+             
+         {/* Section for completed tasks  */}
+         <CompletedTask />
        </div>
      </div>
    </div>
