@@ -1,3 +1,8 @@
+# Demo of the app
+
+<img src="todo demo.gif" width="100%" alt=gif>
+<hr>
+
 # Getting Started with Create React App
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
